@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <iostream> // 
+#include <vector> // 
+#include <algorithm> // bits/stdc++.h>
+#include <cassert>
 using namespace std;
 
 typedef vector<int> vi;
@@ -56,8 +59,8 @@ int main() {
   printf("\n");
 
   // early 2000 problems usually accept O(n^2) solution
-  memset(memo, -1, sizeof memo);
-  printf("LIS length is %d\n\n", LIS(n-1));      // with O(n^2) DP
+  memset(memo, -1, sizeof memo);      // -1 to exclude 99
+  printf("LIS length is %d\n\n", LIS(n-1)-1);    // with O(n^2) DP
 
   // 2020s problems will likely only accept O(n log k) solution
   // new limit: n can be up to 200K
@@ -84,8 +87,8 @@ int main() {
     printf("\n");
   }
 
-  printf("Final LIS is of length %d: ", k);
-  print_LIS(lis_end); printf("\n");
+  printf("Final LIS is of length %d: ", k-1);    // exclude 99
+  print_LIS(p[lis_end]); printf("\n");           // from the answer
 
   assert(LIS(n-1) == k);                         // both must be identical
   return 0;
